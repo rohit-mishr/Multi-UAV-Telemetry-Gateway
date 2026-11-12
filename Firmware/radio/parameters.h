@@ -59,23 +59,27 @@ enum ParamID {
         PARAM_NUM_CHANNELS,   // number of hopping channels
         PARAM_DUTY_CYCLE,     // duty cycle (percentage)
         PARAM_LBT_RSSI,       // listen before talk threshold
-        PARAM_MANCHESTER,     // enable manchester encoding
-        PARAM_RTSCTS,         // enable hardware flow control
-        PARAM_NODEID,         // node ID
-        PARAM_NODEDESTINATION,// packet destination
-        PARAM_SYNCANY,        // Let this node sync from any in the network not just the base
-        PARAM_NODECOUNT,      // number of sequential nodes in the network
-        PARAM_MAX             // must be last
+	PARAM_MANCHESTER,     // enable manchester encoding
+	PARAM_RTSCTS,         // enable hardware flow control
+	PARAM_NODEID,         // node ID
+	PARAM_NODEDESTINATION,// packet destination
+	PARAM_SYNCANY,        // Let this node sync from any in the network not just the base
+	PARAM_NODECOUNT,      // number of sequential nodes in the network
+	PARAM_HOSTMUX,        // base-host mux framing mode
+	PARAM_MAX             // must be last
 };
 
 
-#define PARAM_FORMAT_CURRENT	0x1BUL	//< current parameter format ID
+#define PARAM_FORMAT_CURRENT	0x1CUL	//< current parameter format ID
 
 /// Parameter type.
 ///
 /// All parameters have this type.
 ///
 typedef uint32_t	param_t;
+#if PIN_MAX > 0
+extern  struct pins_user_info pin_values[];
+#endif
 /// Set a parameter
 ///
 /// @note Parameters are not saved until param_save is called.
